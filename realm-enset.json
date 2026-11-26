@@ -1,0 +1,43 @@
+{
+  "realm": "enset",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 3600,
+  "roles": {"realm": [{"name": "lecteur"}, {"name": "gestionnaire"}]},
+  "clients": [
+    {
+      "clientId": "enset-api",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "protocolMappers": [{
+        "name": "audience-enset-api",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-audience-mapper",
+        "config": {"included.client.audience":"enset-api","access.token.claim":"true","id.token.claim":"false"}
+      }]
+    },
+    {
+      "clientId": "enset-tp",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "protocolMappers": [{
+        "name": "audience-enset-api",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-audience-mapper",
+        "config": {"included.client.audience":"enset-api","access.token.claim":"true","id.token.claim":"false"}
+      }]
+    }
+  ],
+  "users": [
+    {"username": "lecteur-demo", "enabled": true, "realmRoles": ["lecteur"]},
+    {"username": "gestion-demo", "enabled": true, "realmRoles": ["gestionnaire"]}
+  ]
+}
