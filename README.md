@@ -29,3 +29,5 @@ Les résultats ci-dessus sont des résultats attendus. Faire les captures Postma
 
 Source : https://www.keycloak.org/docs/latest/server_admin/index.html
 
+
+Docker Compose : définir `KEYCLOAK_ADMIN_PASSWORD`, puis lancer `docker compose up -d`. Avec l’API démarrée, `pwsh -File verifier-api.ps1` vérifie les codes 200 et 401.
