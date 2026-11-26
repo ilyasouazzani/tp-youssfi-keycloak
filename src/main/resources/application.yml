@@ -1,0 +1,10 @@
+server:
+  address: 127.0.0.1
+  port: 8083
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/enset
+          audiences: enset-api
