@@ -1,0 +1,11 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.3
+    command: ["start-dev", "--import-realm"]
+    ports:
+      - "127.0.0.1:8180:8080"
+    environment:
+      KEYCLOAK_ADMIN: tp-admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Définir un mot de passe de démonstration}
+    volumes:
+      - ./realm-enset.json:/opt/keycloak/data/import/realm-enset.json:ro
